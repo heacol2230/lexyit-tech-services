@@ -1,0 +1,14 @@
+.about-us-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.about-us-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.paragraph {
+  text-align: justify;
+}
