@@ -3,12 +3,15 @@ import { Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
   return (
-    <header className="bg-navy p-2 flex justify-between items-center">
-      <h1 className="text-2xl text-white">Lexy IT... Just Lexy it!</h1>
-      <nav>
-        <Link to="/" className="text-white mx-2">Home</Link>
-        <Link to="/about-us" className="text-white mx-2">About Us</Link>
-        <Link to="/BookingForm" className="text-white mx-2">Schedule Today!</Link>
+    <header className="header">
+      <div className="logo-slogan">
+        <h1 className="slogan">Simplify Tech, Just Lexy it!</h1>
+      </div>
+      <nav className="nav">
+        <Link to="/" className="nav-link">Home</Link>
+        <Link to="/about-us" className="nav-link">About Us</Link>
+        <Link to="/services" className="nav-link">Services</Link>
+        <Link to="/schedule-today" className="nav-link">Schedule Today!</Link>
       </nav>
     </header>
   );

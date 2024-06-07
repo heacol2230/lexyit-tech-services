@@ -59,18 +59,24 @@ const RegistrationForm = () => {
           onChange={(e) => setLastName(e.target.value)}
         />
         <br />
-        <input
+        <input 
           type="email"
+          id="email"
+          name="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          autoComplete="on"
         />
         <br />
         <input
           type="password"
+          id="password"
+          name="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          autoComplete="on"
         />
         <br />
         <input
@@ -78,6 +84,7 @@ const RegistrationForm = () => {
           placeholder="Phone"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
+          autoComplete="off"
         />
         <br />
         <input
@@ -85,6 +92,7 @@ const RegistrationForm = () => {
           placeholder="Address"
           value={address}
           onChange={(e) => setAddress(e.target.value)}
+          autoComplete="off"
         />
         <br />
         <button type="submit">Register</button>

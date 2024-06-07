@@ -1,24 +1,45 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import React, { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import axios from 'axios';
 
 interface AppointmentFormProps {
   customerID: string;
 }
 
+interface Service {
+  serviceID: number;
+  serviceName: string;
+  description: string;
+  price: number;
+}
+
 const AppointmentForm: React.FC<AppointmentFormProps> = ({ customerID }) => {
-  const [serviceID, setServiceID] = useState('');
+  const [services, setServices] = useState<Service[]>([]);
+  const [selectedService, setSelectedService] = useState<number>(0);
   const [appointmentDate, setAppointmentDate] = useState('');
   const [startTime, setStartTime] = useState('');
   const [endTime, setEndTime] = useState('');
   const [status, setStatus] = useState('');
-  const [invoiceID, setInvoiceID] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+
+  useEffect(() => {
+    // Fetch services from the server upon component mount
+    fetchServices();
+  }, []);
+
+  const fetchServices = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/api/services');
+      setServices(response.data);
+    } catch (error) {
+      console.error('Error fetching services:', error);
+    }
+  };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!serviceID || !appointmentDate || !startTime || !endTime || !status || !invoiceID) {
+    if (!selectedService || !appointmentDate || !startTime || !endTime || !status) {
       setError('Please fill in all fields');
       return;
     }
@@ -26,12 +47,11 @@ const AppointmentForm: React.FC<AppointmentFormProps> = ({ customerID }) => {
     try {
       const response = await axios.post('http://localhost:5000/api/schedule', {
         customerID,
-        serviceID,
+        serviceID: selectedService,
         appointmentDate,
         startTime,
         endTime,
         status,
-        invoiceID,
       });
       if (response.data.success) {
         setSuccess(response.data.message);
@@ -50,12 +70,12 @@ const AppointmentForm: React.FC<AppointmentFormProps> = ({ customerID }) => {
       {error && <p>{error}</p>}
       {success && <p>{success}</p>}
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Service ID"
-          value={serviceID}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setServiceID(e.target.value)}
-        />
+        <select value={selectedService} onChange={(e: ChangeEvent<HTMLSelectElement>) => setSelectedService(parseInt(e.target.value))}>
+          <option value={0}>Select a service</option>
+          {services.map(service => (
+            <option key={service.serviceID} value={service.serviceID}>{service.serviceName}</option>
+          ))}
+        </select>
         <br />
         <input
           type="date"
@@ -82,13 +102,6 @@ const AppointmentForm: React.FC<AppointmentFormProps> = ({ customerID }) => {
           placeholder="Status"
           value={status}
           onChange={(e: ChangeEvent<HTMLInputElement>) => setStatus(e.target.value)}
-        />
-        <br />
-        <input
-          type="text"
-          placeholder="Invoice ID"
-          value={invoiceID}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setInvoiceID(e.target.value)}
         />
         <br />
         <button type="submit">Schedule</button>

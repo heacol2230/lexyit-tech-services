@@ -21,9 +21,14 @@
     "jsx": "react"
   },
   "include": [
-    "src",
+    "frontend/src",
+    "frontend/public",
     "server",
-    "assets"
+    "assets",
+    "src/**/*",
+    "src/**/*.png",
+    "src",
+    "build"
   ],
   "exclude": [
     "node_modules",

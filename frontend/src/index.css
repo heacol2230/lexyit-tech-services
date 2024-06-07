@@ -1,13 +1,173 @@
+/* frontend/src/index.css */
+
 body {
+  font-family: "Roboto", Verdana, sans-serif;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  background-color: #f8f9fa;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+h1, h2 {
+  text-align: center;
+  color: #00CED1;
+  padding: -100;
+}
+
+.auth-forms {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px;
+}
+
+.auth-forms > div {
+  width: 45%;
+}
+
+.bg-pink {
+  background-color: #b0c4de;
+}
+
+.text-white {
+  color: #0FC7FA;
+}
+
+.text-navy {
+  color: #001f3f;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.max-w-md {
+  max-width: 28rem;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.shadow-md {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.block {
+  display: block;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.p-2 {
+  padding: 0.5rem;
+}
+
+.border {
+  border: 1px solid #ddd;
+}
+
+.rounded {
+  border-radius: 0.25rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Header Style */
+
+header {
+  background-color: #132c75;
+  padding: 40px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-slogan {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.slogan {
+  font-size: 24px;
+  color: white;
+  font-style: italic;
+  font-weight: bold;
+  margin: 0;
+}
+
+.nav {
+  font-size: 20px;
+  display: flex;
+  gap: 40px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: white;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+footer {
+  background-color: #1b3481;
+  padding: -20px 20px;
+  border-top: 1px solid #e0e0e0;
+  color: white;
+}
+
+/* Accessibility and Styling for Home Page */
+
+.intro-text {
+  font-size: 1.25rem;
+  color: #f8f9fa;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.intro-text p {
+  margin-bottom: 1rem;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.intro-text .AppButton {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+header .text-white {
+  color: #ffffff;
 }

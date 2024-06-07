@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import LoginForm from './components/LoginForm';
 import RegistrationForm from './components/RegistrationForm';
 import AppointmentForm from './components/AppointmentForm';
+import Home from './pages/Home';
+import AboutUsPage from './pages/AboutUsPage';
+import ServicesPage from './pages/ServicesPage';
+import ScheduleToday from './pages/ScheduleToday';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Services from './components/Services';
 
-const App = () => {
+const App: React.FC = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [customerID, setCustomerID] = useState('');
 
@@ -20,38 +27,38 @@ const App = () => {
 
   return (
     <Router>
+      <Header />
       <div>
-        <nav>
-          <ul>
-            {loggedIn ? (
-              <>
-                <li><Link to="/schedule">Schedule Appointment</Link></li>
-                <li><button onClick={handleLogout}>Logout</button></li>
-              </>
-            ) : (
-              <>
-                <li><Link to="/login">Login</Link></li>
-                <li><Link to="/register">Register</Link></li>
-              </>
-            )}
-          </ul>
-        </nav>
-
         <Routes>
-          <Route path="/login">
-            {loggedIn ? <Navigate to="/schedule" /> : <LoginForm onLogin={handleLogin} />}
-          </Route>
-          <Route path="/register">
-            {loggedIn ? <Navigate to="/schedule" /> : <RegistrationForm />}
-          </Route>
-          <Route path="/schedule">
-            {loggedIn ? <AppointmentForm customerID={customerID} /> : <Navigate to="/login" />}
-          </Route>
-          <Route path="/">
-            {loggedIn ? <Navigate to="/schedule" /> : <Navigate to="/login" />}
-          </Route>
+          <Route path="/" element={<Home />} />
+          <Route path="/about-us" element={<AboutUsPage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route 
+            path="/login" 
+            element={loggedIn ? <Navigate to="/schedule" /> : <LoginForm onLogin={handleLogin} />} 
+          />
+          <Route 
+            path="/register" 
+            element={loggedIn ? <Navigate to="/schedule" /> : <RegistrationForm />} 
+          />
+          <Route 
+            path="/schedule" 
+            element={loggedIn ? <AppointmentForm customerID={customerID} /> : <Navigate to="/login" />} 
+          />
+          <Route 
+            path="/schedule-today" 
+            element={
+              <ScheduleToday 
+                loggedIn={loggedIn} 
+                onLogin={handleLogin} 
+                onLogout={handleLogout} 
+              />
+            } 
+          />
+          <Route path="/services" element={<Services />} />
         </Routes>
       </div>
+      <Footer />
     </Router>
   );
 };

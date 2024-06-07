@@ -1,18 +1,12 @@
 const mysql = require('mysql');
 
-const connection = mysql.createConnection({
+const pool = mysql.createPool({
+  connectionLimit: 20,
   host: 'localhost',
   user: 'user',
   password: 'userpassword',
   database: 'lexyitbooking'
 });
 
-connection.connect((err) => {
-  if (err) {
-    console.error('Error connecting to MySQL database:', err);
-    return;
-  }
-  console.log('Connected to MySQL database');
-});
-
-module.exports = connection;
+// Export the pool instead of a single connection
+module.exports = pool;

@@ -1,18 +1,17 @@
 import React from 'react';
-import './AboutUs.css';
 
 const AboutUs: React.FC = () => {
   return (
-    <div className="max-w-4xl mx-auto py-8">
+    <div className="max-w-4xl mx-auto py-8" style={{ maxWidth: '800px', margin: '0 auto', padding: '20px' }}>
       <h2 className="text-3xl mb-4 text-center">About Us</h2>
-      <div className="bg-white text-navy p-6 rounded-lg shadow-md">
+      <div className="bg-white text-navy p-6 rounded-lg shadow-md" style={{ textAlign: 'justify' }}>
         <p className="mb-4">
           Welcome to Lexy IT – Where Tech Solutions 
           Meet Seamless Service.
           At Lexy IT, we believe in making technology effortless for you. 
           Whether it's setting up your smart home, optimizing your network, 
           or crafting a stunning website, we're here to make it happen. 
-          Just like our slogan says, Just Lexy It! 
+          Just like our slogan says, Just Lexy IT! 
           Let's turn your tech challenges into triumphs together!
         </p>
         <p className="mb-4">

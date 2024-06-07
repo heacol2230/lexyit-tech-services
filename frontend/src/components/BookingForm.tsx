@@ -27,15 +27,15 @@ const BookingForm: React.FC = () => {
       </div>
       <div className="mb-4">
         <label htmlFor="name" className="block mb-2">Name</label>
-        <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} className="w-full p-2 border rounded" required autoComplete="name" />
+        <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} className="w-full p-2 border rounded" required autoComplete="on" />
       </div>
       <div className="mb-4">
         <label htmlFor="email" className="block mb-2">Email</label>
-        <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full p-2 border rounded" required autoComplete="email" />
+        <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full p-2 border rounded" required autoComplete="on" />
       </div>
       <div className="mb-4">
         <label htmlFor="phone" className="block mb-2">Phone</label>
-        <input type="tel" id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} className="w-full p-2 border rounded" required autoComplete="tel" />
+        <input type="tel" id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} className="w-full p-2 border rounded" required autoComplete="on" />
       </div>
       <button type="submit" className="w-full bg-pink p-2 text-white rounded">Book Now</button>
     </form>

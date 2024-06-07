@@ -1,22 +1,27 @@
 import React from 'react';
 import Services from '../components/Services';
-import AppButton from '../components/AppButton'; // Ensure correct import
-import logo from '../assets/LexyITlogo.png';
+import AppButton from '../components/AppButton';
+import Audio from '../components/Audio';
 import './Home.css';
-//C:\xampp2\htdocs\BACKUP_OF_tech-services-booking-practice\tech-services-booking-practice\frontend\src\assets\LexyITlogo.png
+import lexylogo from '../assets/lexylogo.png';
+
 const Home: React.FC = () => {
   return (
     <div>
-      <header className="bg-navy text-white">
+      <header className="bg-#1b3481 text-white">
         <div className="header-container container mx-auto text-center">
-        <img src={logo} alt="LexyIT logo" className="mx-auto logo-spin" style={{ width: '800px' }} />
+          <img src={lexylogo} alt="lexylogo" className="mx-auto logo-spin" style={{ width: '500px' }} />
           <h2 className="text-5xl mb-4">Welcome to LexyIT</h2>
-        </div>
-        <div className="text-center">
-          <p className="text-xl mb-4">Your trusted partner for home</p>
-          <p className="text-xl mb-4">&</p>
-          <p className="text-xl mb-4">small business tech solutions</p>
-          <AppButton to="/schedule-today">Schedule Today!</AppButton> {/* Use the AppButton component here */}
+          <div className="text-center intro-text">
+            <p className="text-xl mb-4">
+              Your trusted partner <br />
+              for home <br />
+              & <br /> 
+              small business tech solutions</p>
+            <div className="button-container">
+              <AppButton to="/schedule-today">Schedule Today!</AppButton>
+            </div>
+          </div>
         </div>
       </header>
       <section className="py-12">
@@ -24,6 +29,7 @@ const Home: React.FC = () => {
           <Services />
         </div>
       </section>
+      <Audio />
     </div>
   );
 };

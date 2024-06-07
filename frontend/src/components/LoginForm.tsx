@@ -36,16 +36,22 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
       <form onSubmit={handleSubmit}>
         <input
           type="email"
+          id="email"
+          name="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          autoComplete="on"
         />
         <br />
         <input
           type="password"
+          id="password"
+          name="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          autoComplete="off"
         />
         <br />
         <button type="submit">Login</button>

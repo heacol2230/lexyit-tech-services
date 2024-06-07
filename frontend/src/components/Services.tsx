@@ -11,7 +11,7 @@ const Services: React.FC = () => {
         <li className="bg-sky p-4 rounded-lg shadow-md">OS Recovery</li>
         <li className="bg-sky p-4 rounded-lg shadow-md">Home Security Setup & Troubleshooting</li>
         <li className="bg-pink p-4 rounded-lg shadow-md">Free Estimate Appointment 15 mins FREE</li>
-        <li className="bg-pink p-4 rounded-lg shadow-md">In-depth analysis and suggestions consult 30 mins       $50.00</li>
+        <li className="bg-pink p-4 rounded-lg shadow-md">Website and Web Applications</li>
       </ul>
     </div>
   );

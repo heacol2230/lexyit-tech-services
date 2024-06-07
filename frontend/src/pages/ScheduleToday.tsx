@@ -3,17 +3,31 @@ import LoginForm from '../components/LoginForm';
 import RegistrationForm from '../components/RegistrationForm';
 import BookingForm from '../components/BookingForm';
 
-const ScheduleToday: React.FC = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+interface ScheduleTodayProps {
+  loggedIn: boolean;
+  onLogin: (customerID: string) => void;
+  onLogout: () => void;
+}
+
+const ScheduleToday: React.FC<ScheduleTodayProps> = ({ loggedIn, onLogin, onLogout }) => {
   const [isLogin, setIsLogin] = useState(true);
 
-  const handleLogin = () => setIsAuthenticated(true);
+  const handleLogin = (customerID: string) => {
+    onLogin(customerID);
+  };
+
+  const handleLogout = () => {
+    onLogout();
+  };
 
   return (
     <div>
       <h1>Schedule Today!</h1>
-      {isAuthenticated ? (
-        <BookingForm />
+      {loggedIn ? (
+        <div>
+          <BookingForm />
+          <button onClick={handleLogout}>Logout</button>
+        </div>
       ) : (
         <div>
           {isLogin ? (
