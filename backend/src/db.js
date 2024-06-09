@@ -8,5 +8,4 @@ const pool = mysql.createPool({
   database: 'lexyitbooking'
 });
 
-// Export the pool instead of a single connection
 module.exports = pool;

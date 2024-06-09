@@ -54,25 +54,27 @@ margin-top: 100px;
 
 /* Footer styles */
 .footer {
-  background-color: #1b3481;
+  background-color: #132c75;
   color: white;
-  padding: 1.5rem 0;
+  width: 100%;
+  height: 200px;
+  padding: 4.5rem 200px;
 }
 
 .left-footer {
-  flex: 1;
+  float: left;
   text-align: left;
+  flex-direction: column;
 }
 
 .contact-info {
-  margin-top: 0.5rem;
+  margin: 0.5rem;
 }
 
 .right-footer {
-  flex: 1;
-  display: flex;
+  float: right;
+  text-align: right;
   flex-direction: column;
-  align-items: flex-end;
 }
 
 .footer-link {

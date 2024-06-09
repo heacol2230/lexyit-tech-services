@@ -14,15 +14,15 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:5000/api/login', {
+      const response = await axios.post('http://localhost:5000/api/auth/login', {
         email,
         password,
       });
-      if (response.data.success) {
-        onLogin(response.data.email);
+      if (response.data.token) { 
+        onLogin(response.data.customerID);
         setError('');
       } else {
-        setError(response.data.message);
+        setError(response.data.message || 'Login failed'); 
       }
     } catch (error) {
       setError('An error occurred. Please try again later.');
