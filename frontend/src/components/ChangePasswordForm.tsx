@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const RegistrationForm: React.FC = () => {
+const ChangePasswordForm: React.FC = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
     email: '',
-    password: '',
-    phone: '',
-    address: ''
+    oldPassword: '',
+    newPassword: ''
   });
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -22,7 +19,7 @@ const RegistrationForm: React.FC = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/register', formData);
+      const response = await axios.post('http://localhost:5000/api/auth/change-password', formData);
       setSuccess(response.data.message);
       setError('');
     } catch (error) {
@@ -37,28 +34,6 @@ const RegistrationForm: React.FC = () => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label>First Name:</label>
-        <input 
-          type="text" 
-          name="firstName" 
-          value={formData.firstName} 
-          onChange={handleChange} 
-          required 
-          autoComplete="given-name"
-        />
-      </div>
-      <div>
-        <label>Last Name:</label>
-        <input 
-          type="text" 
-          name="lastName" 
-          value={formData.lastName} 
-          onChange={handleChange} 
-          required 
-          autoComplete="family-name"
-        />
-      </div>
-      <div>
         <label>Email:</label>
         <input 
           type="email" 
@@ -70,47 +45,32 @@ const RegistrationForm: React.FC = () => {
         />
       </div>
       <div>
-        <label>Password:</label>
+        <label>Old Password:</label>
         <input 
           type="password" 
-          name="password" 
-          value={formData.password} 
+          name="oldPassword" 
+          value={formData.oldPassword} 
+          onChange={handleChange} 
+          required 
+          autoComplete="current-password"
+        />
+      </div>
+      <div>
+        <label>New Password:</label>
+        <input 
+          type="password" 
+          name="newPassword" 
+          value={formData.newPassword} 
           onChange={handleChange} 
           required 
           autoComplete="new-password"
         />
       </div>
-      <div>
-        <label>Phone:</label>
-        <input 
-          type="text" 
-          name="phone" 
-          value={formData.phone} 
-          onChange={handleChange} 
-          required 
-          autoComplete="tel"
-        />
-      </div>
-      <div>
-        <label>Address:</label>
-        <input 
-          type="text" 
-          name="address" 
-          value={formData.address} 
-          onChange={handleChange} 
-          required 
-          autoComplete="street-address"
-        />
-      </div>
       {error && <div>{error}</div>}
       {success && <div>{success}</div>}
-      <button type="submit">Register</button>
+      <button type="submit">Change Password</button>
     </form>
   );
 };
 
-export default RegistrationForm;
-
-
-
-
+export default ChangePasswordForm;

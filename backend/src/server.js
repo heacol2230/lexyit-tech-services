@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const authRoutes = require('./routes/authRoutes');
+const searchRoutes = require('./routes/searchRoutes');
 const pool = require('./db');
 
 const app = express();
@@ -11,6 +12,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.use('/api/auth', authRoutes);
+app.use('/api', searchRoutes);
 
 app.get('/api/schedule', (req, res) => {
   const today = new Date().toISOString().slice(0, 10);
